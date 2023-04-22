@@ -71,11 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    try {
-                                        throw task.getException();
-                                    } catch (Exception e) {
-                                        Log.e("ISTUDENTPROJECT", "Error: " + e.getMessage());
-                                    }
+
                                     Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 }
                             }
