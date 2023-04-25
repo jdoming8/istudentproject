@@ -4,33 +4,45 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.istudentproject.model.LoginModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginViewModel extends ViewModel {
-
+    private MutableLiveData<Boolean> isLoading = new MutableLiveData<>(false);
+    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
+    private MutableLiveData<Boolean> loginSuccessful = new MutableLiveData<>(false);
     private FirebaseAuth mAuth;
-
-    private MutableLiveData<FirebaseUser> userLiveData;
 
     public LoginViewModel() {
         mAuth = FirebaseAuth.getInstance();
-        userLiveData = new MutableLiveData<>();
     }
 
-    public LiveData<FirebaseUser> getUserLiveData() {
-        return userLiveData;
+    public LiveData<Boolean> getIsLoading() {
+        return isLoading;
     }
 
-    public void signIn(String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password)
+    public LiveData<String> getErrorMessage() {
+        return errorMessage;
+    }
+
+    public LiveData<Boolean> getLoginSuccessful() {
+        return loginSuccessful;
+    }
+
+    public void login(LoginModel loginModel) {
+        isLoading.setValue(true);
+
+        mAuth.signInWithEmailAndPassword(loginModel.getEmail(), loginModel.getPassword())
                 .addOnCompleteListener(task -> {
+                    isLoading.setValue(false);
+
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        userLiveData.postValue(user);
+                        loginSuccessful.setValue(true);
                     } else {
-                        userLiveData.postValue(null);
+                        errorMessage.setValue("Authentication failed.");
                     }
                 });
     }
 }
+
