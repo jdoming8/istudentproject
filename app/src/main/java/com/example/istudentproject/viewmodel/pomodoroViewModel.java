@@ -1,10 +1,12 @@
-package com.example.istudentproject;
+package com.example.istudentproject.viewmodel;
 
 import android.os.CountDownTimer;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.istudentproject.model.pomodoro;
 
 public class pomodoroViewModel extends ViewModel {
     private MutableLiveData<pomodoro> pomodoroLiveData = new MutableLiveData<>();

@@ -1,4 +1,4 @@
-package com.example.istudentproject;
+package com.example.istudentproject.view;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -6,6 +6,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.example.istudentproject.R;
+import com.example.istudentproject.viewmodel.pomodoroViewModel;
 
 public class pomodoroActivity extends AppCompatActivity {
     private pomodoroViewModel viewModel;

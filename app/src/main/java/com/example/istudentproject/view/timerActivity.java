@@ -1,10 +1,12 @@
-package com.example.istudentproject;
+package com.example.istudentproject.view;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.istudentproject.R;
 
 public class timerActivity extends AppCompatActivity{
 
