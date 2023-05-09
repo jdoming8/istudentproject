@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
         viewModel.getLoginSuccessful().observe(this, loginSuccessful -> {
             if (loginSuccessful) {
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                Intent intent = new Intent(LoginActivity.this, TaskListActivity.class);
                 startActivity(intent);
                 finish();
             }

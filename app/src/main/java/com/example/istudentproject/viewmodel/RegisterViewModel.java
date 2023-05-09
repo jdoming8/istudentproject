@@ -5,32 +5,33 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.istudentproject.model.RegisterModel;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterViewModel extends ViewModel {
 
-    private MutableLiveData<Boolean> registrationSuccess = new MutableLiveData<>();
-    private MutableLiveData<String> registrationErrorMessage = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
+    private RegisterModel registerModel = new RegisterModel();
 
-    public void registerUser(String email, String password) {
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        registrationSuccess.postValue(true);
-                    } else {
-                        registrationSuccess.postValue(false);
-                        registrationErrorMessage.postValue(task.getException().getMessage());
-                    }
-                });
+    public LiveData<Boolean> getIsLoading() {
+        return isLoading;
     }
 
-    public LiveData<Boolean> getRegistrationSuccess() {
-        return registrationSuccess;
-    }
+    public void register(String email, String password, RegisterModel.OnRegistrationListener listener) {
+        isLoading.setValue(true);
+        registerModel.register(email, password, new RegisterModel.OnRegistrationListener() {
+            @Override
+            public void onRegistrationSuccess() {
+                isLoading.postValue(false);
+                listener.onRegistrationSuccess();
+            }
 
-    public LiveData<String> getRegistrationErrorMessage() {
-        return registrationErrorMessage;
+            @Override
+            public void onRegistrationFailure(String errorMessage) {
+                isLoading.postValue(false);
+                listener.onRegistrationFailure(errorMessage);
+            }
+        });
     }
 }

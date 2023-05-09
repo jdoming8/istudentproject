@@ -26,6 +26,9 @@
         <activity
             android:name=".view.HomeActivity"
             android:exported="false"/>
+        <activity
+            android:name=".view.TaskListActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
