@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">istudentproject</string>
+    <string name="heading_settings_text">⚙️ Ajustes</string>
+    <string name="delete_account_text">Eliminar cuenta</string>
+    <string name="rate_us">Califícanos</string>
+    <string name="comments_text">Comentarios y sugerencias</string>
+    <string name="my_groups_text">Mis grupos</string>
+    <string name="reminders_text">Recordatorios diarios</string>
+    <string name="actualyze_premium_text">Actualizar al Plan Premium ⭐ </string>
+    <string name="lang_text">Idioma</string>
+    <string name="calendar_sync">Conectar con Google Calendar </string>
+    <string name="user_name">Nombre y apellidos</string>
+    <string name="email">Correo electrónico</string>
+
+    <string-array name="spinnerLangItems">
+        <item>Español</item>
+        <item>English</item>
+    </string-array>
 </resources>
