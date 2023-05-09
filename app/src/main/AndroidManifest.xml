@@ -29,6 +29,18 @@
         <activity
             android:name=".view.TaskListActivity"
             android:exported="false"/>
+        <activity
+            android:name=".view.pomodoroActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.NotificationsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.ConfiguracionesActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.NotesActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
