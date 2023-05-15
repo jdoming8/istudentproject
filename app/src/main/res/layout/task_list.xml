@@ -50,6 +50,8 @@
         android:layout_alignParentBottom="true"
         android:background="#f85f6a"
         app:itemIconTint="@color/black"
-        app:menu="@menu/menu_main"/>
+        app:itemTextColor="@color/black"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_main" />
 
 </RelativeLayout>

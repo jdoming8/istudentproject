@@ -86,6 +86,7 @@
         android:background="#f85f6a"
         app:itemIconTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_main"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
