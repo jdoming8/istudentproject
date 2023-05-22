@@ -1,5 +1,6 @@
 package com.example.istudentproject.view;
 
+
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -18,12 +19,14 @@ import com.example.istudentproject.viewmodel.pomodoroViewModel;
 
 import java.util.Locale;
 
+
 public class pomodoroActivity extends AppCompatActivity {
     private pomodoroViewModel viewModel;
 
     private TextView timerTextView;
     private ImageButton startButton;
     private ImageButton stopButton;
+
     private ImageButton pauseButton;
 
     private ProgressBar progressBar;
@@ -31,6 +34,7 @@ public class pomodoroActivity extends AppCompatActivity {
     private CountDownTimer timer;
     private long timeRemaining;
     private boolean isTimerRunning;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class pomodoroActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(pomodoroViewModel.class);
 
         timerTextView = findViewById(R.id.timerText);
+
         startButton = findViewById(R.id.playButton);
         stopButton = findViewById(R.id.stopButton);
         pauseButton = findViewById(R.id.pauseButton);
@@ -125,6 +130,7 @@ public class pomodoroActivity extends AppCompatActivity {
 
         int progress = (int) (timeRemaining * 10); // Convertimos el timeRemaining a un valor proporcional
         progressBar.setProgress(progress);
+
     }
 
     private void updateProgressBar() {

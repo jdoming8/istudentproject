@@ -1,12 +1,18 @@
 package com.example.istudentproject.model;
 
-public class TaskModel {
+import java.io.Serializable;
+
+
+public class TaskModel implements Serializable {
     private String nombre;
     private boolean recurrente;
     private String fechaLimite;
-    private int diasRecurrente;
+    private String diasRecurrente;
 
-    public TaskModel(String nombre, boolean recurrente, String fechaLimite, int diasRecurrente) {
+    public TaskModel() {
+
+    }
+    public TaskModel(String nombre, boolean recurrente, String fechaLimite, String diasRecurrente) {
         this.nombre = nombre;
         this.recurrente = recurrente;
         this.fechaLimite = fechaLimite;
@@ -37,11 +43,19 @@ public class TaskModel {
         this.fechaLimite = fechaLimite;
     }
 
-    public int getDiasRecurrente() {
+    public String getDiasRecurrente() {
         return this.diasRecurrente;
     }
 
-    public void setDiasRecurrente(int diasRecurrente) {
+    public void setDiasRecurrente(String diasRecurrente) {
         this.diasRecurrente = diasRecurrente;
+    }
+
+    public String getTaskModel() {
+        String tasca = "Nombre: " + this.getNombre() + " Fecha: " + this.getFechaLimite();
+        if (recurrente) {
+            tasca += " Cada " + this.getDiasRecurrente() + " dias";
+        }
+        return tasca;
     }
 }
