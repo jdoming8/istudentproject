@@ -45,12 +45,7 @@ public class pomodoroActivity extends AppCompatActivity {
         pauseButton = findViewById(R.id.pauseButton);
         progressBar = findViewById(R.id.progressBar);
 
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startPomodoro();
-            }
-        });
+        startButton.setOnClickListener(v -> startPomodoro());
 
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,11 +65,12 @@ public class pomodoroActivity extends AppCompatActivity {
     }
 
     private void initializeTimer() {
-        timer = new CountDownTimer(0, 1000) {
+        timer = new CountDownTimer(25*60*1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timeRemaining = millisUntilFinished / 1000;
                 updateTimerTextView();
+                updateProgressBar();
             }
 
             @Override
@@ -91,7 +87,7 @@ public class pomodoroActivity extends AppCompatActivity {
     }
     private void startPomodoro() {
         if (!isTimerRunning) {
-            if(timerTextView.getText().equals("00:00")){
+            if(timeRemaining==0){
                 timeRemaining = 25 * 60 ; // 25 minutes in seconds
                 timerTextView.setText("25:00");
             }
@@ -100,6 +96,7 @@ public class pomodoroActivity extends AppCompatActivity {
                 public void onTick(long millisUntilFinished) {
                     timeRemaining = millisUntilFinished / 1000;
                     updateTimerTextView();
+                    updateProgressBar();
                 }
 
                 @Override
@@ -114,7 +111,9 @@ public class pomodoroActivity extends AppCompatActivity {
     private void stopPomodoro() {
         timer.cancel();
         timerTextView.setText("00:00");
+        timeRemaining=0;
         isTimerRunning = false;
+        updateProgressBar();
     }
 
 
@@ -125,6 +124,11 @@ public class pomodoroActivity extends AppCompatActivity {
         timerTextView.setText(timeString);
 
         int progress = (int) (timeRemaining * 10); // Convertimos el timeRemaining a un valor proporcional
+        progressBar.setProgress(progress);
+    }
+
+    private void updateProgressBar() {
+        int progress = (int) (progressBar.getMax() - timeRemaining);
         progressBar.setProgress(progress);
     }
 }
