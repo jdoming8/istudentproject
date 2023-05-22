@@ -1,4 +1,4 @@
-package com.example.istudentproject;
+package com.example.istudentproject.model;
 
 public class pomodoro {
     private long duration;
