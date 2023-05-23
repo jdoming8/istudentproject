@@ -14,7 +14,7 @@
         android:layout_marginBottom="196dp"
         android:background="@color/white"
         android:contentDescription="play"
-        android:onClick="playPauseTimer"
+        android:onClick="startPomodoro"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +28,7 @@
         android:layout_marginBottom="204dp"
         android:background="@color/white"
         android:scaleType="fitCenter"
+        android:onClick="stopPomodoro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/pause_play_square_stop_icon_1320185672026264120" />
@@ -42,6 +43,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="pausePomodoro"
         app:srcCompat="@drawable/pause_rojo" />
 
     <ProgressBar
