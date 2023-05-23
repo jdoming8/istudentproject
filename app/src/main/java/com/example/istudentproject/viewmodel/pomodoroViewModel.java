@@ -43,4 +43,10 @@ public class pomodoroViewModel extends ViewModel {
             timer.cancel();
         }
     }
+
+
+    public void stopPomodoro() {
+        pomodoroLiveData.postValue(null);
+    }
+
 }
